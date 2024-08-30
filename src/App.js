@@ -65,6 +65,8 @@ export default App;
 
 // l'aggiunta dei commenti la ho fatta per dimostrare sia a lei che a me stesso che sò cosa ho utilizzato e per ripasso personale,
 // da ora in avanti cercherò di fare sempre così.
+// il fatto che continuo comunque a ricercare online anche soluzioni che non conosco appieno è un'insegnamento che ci fece il primo insegnante Dario Del Giudice,
+// che reputo abbastanza giusta visto che la mole di conoscenze da applicare è molto grande, spero non sia un problema troppo grave, in caso mi faccia sapere.
 
 
 
