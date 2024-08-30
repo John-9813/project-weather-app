@@ -13,39 +13,40 @@ import { Container } from 'react-bootstrap';
 import NotFound from './components/NotFound';
 
 function App() {
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null); // definisco lo stato per i dati meteo
 
+  // funzione asincrona per recuperare i dati meteo
   const fetchWeatherData = async (city) => {
     try {
       const apiKey = '97ab1f2ca067001a39f0a1f84a73ce34';
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}` // mi sembrava più ordinato aggiungere la key in questo modo
       );
       if (response.ok) {
-        const data = await response.json();
-        setWeatherData(data);
+        const data = await response.json(); // converto la risposta in formato JSON
+        setWeatherData(data); // aggiorno lo stato con i dati meteo
       } else {
-        alert('City not found');
+        alert('City not found'); // mostra un alert se la città non viene trovata
       }
     } catch (error) {
-      console.error('Error fetching weather data:', error);
+      console.error('Error fetching weather data:', error); // log di eventuali errori
     }
   };
 
   return (
-    <BrowserRouter>
+    <BrowserRouter>  {/* browserRouter che contiene tutto come ci ha consigliato per non sbagliare*/}
       <div className="App">
-        <Navbar onSearch={fetchWeatherData} />
+        <Navbar onSearch={fetchWeatherData} /> {/* navbar con la funzione di ricerca */}
         <div className="main-content">
           <Container> 
-            <Routes>
-              <Route path="/" element={<HomePage onCityClick={fetchWeatherData} />} />
+            <Routes> {/* aggiunta dei vari percorsi */}
+              <Route path="/" element={<HomePage onCityClick={fetchWeatherData} />} /> 
               <Route
                 path="/weather"
                 element={
                   <>
-                    <WeatherDisplay weatherData={weatherData} />
-                    <WeatherDetails weatherData={weatherData} />
+                    <WeatherDisplay weatherData={weatherData} /> {/* visualizza i dati meteo */}
+                    <WeatherDetails weatherData={weatherData} /> {/* visualizza i dettagli meteo */}
                   </>
                 }
               />
@@ -56,11 +57,14 @@ function App() {
         </div>
         <Footer />
       </div>
-    </BrowserRouter>
+    </BrowserRouter> 
   );
 }
 
 export default App;
+
+// l'aggiunta dei commenti la ho fatta per dimostrare sia a lei che a me stesso che sò cosa ho utilizzato e per ripasso personale,
+// da ora in avanti cercherò di fare sempre così.
 
 
 

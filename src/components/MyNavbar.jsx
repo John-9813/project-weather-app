@@ -3,26 +3,33 @@ import { Navbar, Nav, Container, Form, FormControl, Button } from "react-bootstr
 import { Link, useNavigate } from "react-router-dom";
 
 const CustomNavbar = ({ onSearch }) => {
-  const navigate = useNavigate(); // Hook per la navigazione
+  const navigate = useNavigate(); // hook per la navigazione
 
   const handleSearch = (e) => {
-    e.preventDefault();
-    const city = e.target.elements.city.value.trim(); // Prendi il valore della città dal campo di input
+    e.preventDefault(); // previene il comportamento predefinito del form
+
+    const city = e.target.elements.city.value.trim(); // controlla se il campo città non è vuoto, trim() è un metodo delle stringhe che aiuta il codice a capire
+    // se il campo di ricerca è vuoto o ha alcuni spazi vuoti, ho dovuto ricercare questo metodo online perchè avevo errori con alcuni nomi di città tipo "new york"
+
     if (city) {
-      onSearch(city); // Esegui la funzione di ricerca
-      navigate('/weather'); // Naviga alla pagina del meteo
+      onSearch(city); // esegue la funzione di ricerca
+      navigate('/weather'); // naviga alla pagina del meteo
     }
   };
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" className="w-100">
+    <Navbar bg="dark" variant="dark" expand="lg" className="w-100 ">
       <Container fluid>
-        <Navbar.Brand as={Link} to="/">
-          <img src="/logo-meteo.png" alt="Logo" className="logo" /> {/* Aggiornato */}
+
+        <Navbar.Brand as={Link} to="/"> {/* tra le mie ricerche ho trovato un metodo che si può usare per "Link", funziona allo stesso modo di quello che ci ha mostrato, quindi li ho usati entrambi*/}
+
+          <img src="/logo-meteo.png" alt="Logo" className="logo" /> {/* logo dell'app che mi son fatto creare al volo da una di quelle ia online perchè.. si*/}
         </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+
+          <Nav className="me-auto ">
             <Link to="/" className="nav-link">
               Home
             </Link>
@@ -33,17 +40,21 @@ const CustomNavbar = ({ onSearch }) => {
               Contact
             </Nav.Link>
           </Nav>
+
           <Form className="d-flex" onSubmit={handleSearch}>
+
             <FormControl
               type="search"
               placeholder="Search City"
               className="me-2"
               aria-label="Search"
               name="city"
-            />
-            <Button variant="outline-info" type="submit">
+            /> {/* campo di input per la ricerca della città */}
+
+            <Button variant="outline-info" type="submit"> {/* bottone per inviare il form */}
               Search
             </Button>
+
           </Form>
         </Navbar.Collapse>
       </Container>

@@ -1,4 +1,4 @@
-
+/* aggiunta di alcune regole per aiutarmi quando non ricordavo alcune cose di bootstrap o quando non riuscivo a farle funzionare con className, o semplicemente maggiore personalizzazione */
 .App {
   display: flex;
   flex-direction: column;

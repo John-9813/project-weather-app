@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; // importo l'hook useState
 import { Form, Button } from 'react-bootstrap';
 
 const SearchBar = ({ onSearch }) => {
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState(''); // definisce lo stato per il nome della città
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (city.trim()) {
-      onSearch(city);
-      setCity('');
+    e.preventDefault(); // previene il comportamento predefinito del form
+
+    if (city.trim()) {  //  prendo il valore della città dal campo di input rimuove gli spazi bianchi
+
+      onSearch(city); // chiama la funzione onSearch con il nome della città
+      setCity(''); // resetta il campo città
     }
   };
 
